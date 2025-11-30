@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Comparison Report</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<style>
+    body { font-family: Arial, sans-serif; background:#0f172a; color:white; padding:20px; }
+    h1, h2 { color: #00ffbf; }
+    .card { background:#1e293b; padding:20px; border-radius:12px; margin-bottom:25px; box-shadow:0px 0px 20px rgba(0,255,200,0.1); }
+    pre { background:#0f1a2b; padding:15px; border-radius:8px; overflow-x:auto; }
+    .btn { padding:12px 20px; background:#00ffbf; border-radius:8px; color:black; text-decoration:none; font-weight:bold; }
+    .btn:hover { background:#00d4a3; }
+</style>
+</head>
+<body>
+
+<h1>Model Comparison Report</h1>
+<p>This report evaluates the performance results of both CNN and Quantum models using classification reports and confusion matrices.</p>
+
+{% for model in models %}
+<div class="card-local">
+    <h2>{{ model.name }} Performance</h2>
+
+    <p><strong>Training Accuracy:</strong> {{ model.train_acc }}</p>
+    <p><strong>Validation Accuracy:</strong> {{ model.val_acc }}</p>
+    <p><strong>Test Accuracy:</strong> {{ model.test_acc }}</p>
+
+    <h3>Classification Report</h3>
+    <pre>{{ model.classification_report }}</pre>
+
+    <h3>Confusion Matrix</h3>
+    <pre>{{ model.confusion_matrix }}</pre>
+</div>
+{% endfor %}
+
+<center><a class="btn" href="/">⬅ Back to Home</a></center>
+
+<footer style="margin-top:40px; text-align:center; color:#aaa;">© 2025 Smart Hospital | Powered by Quantum-AI</footer>
+
+</body>
+</html>

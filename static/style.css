@@ -1,0 +1,120 @@
+/* Global Body */
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Headers */
+h1, h2, h3 {
+    color: #00ffbf;
+    margin-top: 0;
+}
+
+h3 {
+    color: #a0f9d7;
+}
+
+/* Cards */
+.card {
+    background: #1e293b;
+    min-width: 280px; 
+    max-width: 350px;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0px 0px 20px rgba(0,255,200,0.1);
+}
+
+.card-local {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0px 0px 20px rgba(0,255,200,0.1);
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 20px;
+    background: #00ffbf;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+}
+.btn:hover {
+    background: #00d4a3;
+    transform: scale(1.05);
+}
+
+/* File Input */
+input[type="file"] {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #0f1a2b;
+    color: white;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Image Preview */
+img {
+    border-radius: 12px;
+    margin-top: 15px;
+    max-width: 100%;
+    box-shadow: 0px 0px 15px rgba(0,255,200,0.2);
+}
+
+/* Result Cards */
+.result-card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 20px rgba(0,255,200,0.1);
+}
+
+/* Lists */
+ul {
+    padding-left: 20px;
+}
+li {
+    margin-bottom: 8px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    color: #a0f9d7;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 20px rgba(0,255,200,0.2);
+}
+.modal-content button {
+    margin-top: 15px;
+}

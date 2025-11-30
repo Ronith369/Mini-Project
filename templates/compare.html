@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Comparison</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Model Comparison: CNN vs Quantum Model</h1>
+<p>Performance comparison of CNN and Quantum ML models for bone cancer detection.</p>
+
+<div class="card-local">
+    <h2>CNN Model Performance</h2>
+    <p><strong>Training Accuracy:</strong> {{ cnn_train_acc }}</p>
+    <p><strong>Validation Accuracy:</strong> {{ cnn_val_acc }}</p>
+    <p><strong>Test Accuracy:</strong> {{ cnn_test_acc }}</p>
+    <h3>Classification Report</h3>
+    <pre>{{ cnn_report }}</pre>
+    <h3>Confusion Matrix</h3>
+    <pre>{{ cnn_confusion }}</pre>
+</div>
+
+<div class="card-local">
+    <h2>Quantum Model Performance</h2>
+    <p><strong>Accuracy:</strong> {{ q_acc }}</p>
+    <h3>Classification Report</h3>
+    <pre>{{ q_report }}</pre>
+    <h3>Confusion Matrix</h3>
+    <pre>{{ q_confusion }}</pre>
+</div>
+
+<div class="card-local\">
+    <h2>Key Observations</h2>
+    <ul>
+        <li>CNN excels at visual feature extraction.</li>
+        <li>Quantum Model works well in high-dimensional feature space.</li>
+        <li>Combination improves reliability.</li>
+    </ul>
+</div>
+
+<center><a class="btn" href="/">⬅ Back to Home</a></center>
+
+<footer>© 2025 Smart Hospital | Powered by Quantum-AI</footer>
+
+</body>
+</html>

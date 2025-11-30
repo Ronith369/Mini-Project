@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🩺 Bone Cancer Detection</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+ 
+<center><h1>🩺 Bone Cancer Detection</h1></center>
+
+<center><div class="card">
+    <h2>Upload X-Ray Image</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="imageUpload" name="image" accept="image/*" required>
+        <button type="submit" class="btn">Analyze</button>
+    </form>
+
+    <div id="previewContainer" style="display:none;">
+        <h3>Selected Image Preview:</h3>
+        <img id="imagePreview" src="#" alt="X-ray Preview">
+    </div>
+
+    <div id="resultArea"></div>
+  
+</div></center>
+  <!-- <center><a class="btn" href="/compare">View Model Comparison</a></center> -->
+<div class="card-local">
+    <h2>Bone Cancer Overview</h2>
+    <p>Bone cancer occurs when abnormal cells grow uncontrollably within your bones. Early detection is crucial for successful treatment.</p>
+
+    <h3>Stages</h3>
+    <ul>
+        <li><b>Stage 1:</b> Localized small tumor.</li>
+        <li><b>Stage 2:</b> Growing within the bone.</li>
+        <li><b>Stage 3:</b> Spread to nearby bones or lymph nodes.</li>
+        <li><b>Stage 4:</b> Metastasis to distant organs.</li>
+    </ul>
+</div>
+
+<!-- <center><a class="btn" href="/compare">View Model Comparison</a></center> -->
+
+<footer>© 2025 Smart Hospital | Powered by Quantum-AI</footer>
+
+<script>
+const form = document.getElementById('uploadForm');
+const fileInput = document.getElementById('imageUpload');
+const previewContainer = document.getElementById('previewContainer');
+const imagePreview = document.getElementById('imagePreview');
+const resultArea = document.getElementById('resultArea');
+
+fileInput.addEventListener('change', () => {
+    if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = e => {
+            imagePreview.src = e.target.result;
+            previewContainer.style.display = 'block';
+        }
+        reader.readAsDataURL(fileInput.files[0]);
+    } else {
+        previewContainer.style.display = 'none';
+    }
+});
+
+form.addEventListener('submit', async e => {
+    e.preventDefault();
+    resultArea.innerHTML = `<p style="color:#00ffbf;font-weight:bold;">Analyzing...</p>`;
+    const formData = new FormData(form);
+    try {
+        const response = await fetch('/predict', { method: 'POST', body: formData });
+        const result = await response.json();
+
+        resultArea.innerHTML = `
+            <div class="result-card">
+                <h3>Prediction: ${result.prediction}</h3>
+                <p><strong>CNN Model:</strong> ${result.cnn_label}</p>
+                <p><strong>Quantum Model:</strong> ${result.quantum_label}</p>
+            </div>
+        `;
+    } catch (err) {
+        resultArea.innerHTML = `<p style="color:red;font-weight:bold;">Error analyzing image.</p>`;
+        console.error(err);
+    }
+});
+</script>
+
+</body>
+</html>
